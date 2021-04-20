@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -28,7 +29,10 @@ public class MyGame extends ApplicationAdapter {
 	Double velX;
 	Double velY;
 	Bombing boom = new Bombing();
+	static int money = 100;
+	BitmapFont font = new BitmapFont();
 	int enal = 10;
+	int abilityCost = 25;
 	public ShapeRenderer srend;
 	boolean canPlace = false;
 	boolean canPlace1 = false;
@@ -49,6 +53,7 @@ public class MyGame extends ApplicationAdapter {
 	public void create() {
 		//PlayScreen();
 		batch = new SpriteBatch();
+		font.setColor(Color.CYAN);
 		twrs = new LinkedList<>();
 		Tower tower = new Laser();
 		tower.setPosX(-1000);
@@ -103,7 +108,7 @@ public class MyGame extends ApplicationAdapter {
 		btn2.setSize(150f, 150f);
 		Gdx.input.setInputProcessor(new InputAdapter() {
 			public boolean touchUp(int x, int y, int pointer, int button) {
-				if (canPlace) {
+				if (canPlace && money >=10) {
 					Tower tower = new Laser();
 					tower.setPosX(x);
 					tower.setPosY(y * (-1) + 1000);
@@ -111,9 +116,11 @@ public class MyGame extends ApplicationAdapter {
 					twrs.addFirst(tower);
 					velX /= 1.16;
 					velY /= 1.16;
+					money-=10;
 					canPlace = false;
+					System.out.println(money);
 				}
-				if (canPlace1) {
+				if (canPlace1 && money>=50) {
 					Tower tower = new RocketTower();
 					tower.setPosX(x);
 					tower.setPosY(y * (-1) + 1000);
@@ -121,7 +128,9 @@ public class MyGame extends ApplicationAdapter {
 					twrs.addFirst(tower);
 					velX /= 1.16;
 					velY /= 1.16;
+					money-=50;
 					canPlace1 = false;
+					System.out.println(money);
 				}
 				if (x >= 1005 & x <= 1155 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
 					canPlace = true;
@@ -129,9 +138,13 @@ public class MyGame extends ApplicationAdapter {
 				if (x >= 1305 & x <= 1455 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
 					canPlace1 = true;
 				}
-				if (x >= 1605 & x <= 1755 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
+				if (x >= 1605 & x <= 1755 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275 && money>=abilityCost) {
 					boom.ability(enemies);
+					money-=abilityCost;
+					System.out.println(money);
+					abilityCost+=5;
 				}
+
 				return true;
 			}
 		});

@@ -39,6 +39,7 @@ public abstract class Enemy {
             velY = 0d;
             velX = 0d;
             Rocket.a *=1.3;
+            MyGame.money+=a/10;
         }
     }
     public void attacked(Tower tower){
@@ -94,6 +95,7 @@ public abstract class Enemy {
     public void drawHealth(ShapeRenderer srend){
         srend.setColor(Color.GREEN);
         srend.rect(enemy.getX(), enemy.getY()-50, health/a*75, 10);
+
     }
 }
 
