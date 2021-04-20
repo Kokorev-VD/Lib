@@ -1,15 +1,17 @@
 package com.example.MyGame;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import java.util.ArrayList;
 
 public abstract class Enemy {
     public Sprite enemy;
     public Sprite blade;
-    private int health = a;
-    private static int a = 100;
+    private float health = a;
+    private static float a = 100;
     private int indexX = 0;
     private int indexY = 0;
     private int s = 0;
@@ -63,7 +65,7 @@ public abstract class Enemy {
         this.velY = velY;
     }
 
-    public static int getA() {
+    public static float getA() {
         return a;
     }
 
@@ -88,5 +90,9 @@ public abstract class Enemy {
     }
 
     public abstract void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY);
+    public void drawHealth(ShapeRenderer srend){
+        srend.setColor(Color.GREEN);
+        srend.rect(enemy.getX(), enemy.getY()-50, health/a*75, 10);
+    }
 }
 

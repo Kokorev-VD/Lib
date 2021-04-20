@@ -77,7 +77,7 @@ public class MyGame extends ApplicationAdapter {
 		velX = 0.8;
 		velY = 0.8;
 		for (int i = 0; i < 10; i++) {
-			if (Math.random() > 0.5) {
+			if (Math.random() < 0.5) {
 				Helicopter h = new Helicopter(-250 * i, 450);
 				enemies.add(h);
 			} else {
@@ -134,14 +134,14 @@ public class MyGame extends ApplicationAdapter {
 	public void render() {
 		batch.begin();
 		batch.draw(new Texture("background.png"), 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		srend.begin(ShapeRenderer.ShapeType.Line);
+		srend.begin(ShapeRenderer.ShapeType.Filled);
 		btn.draw(batch);
 		btn1.draw(batch);
 		if (enemies.isEmpty()) {
 			enal += 5;
-			Enemy.setA(Enemy.getA() + 50);
+			Enemy.setA((int) (Enemy.getA() + 50));
 			for (int i = 0; i < enal; i++) {
-				if (Math.random() > 0.5) {
+				if (Math.random() < 0.5) {
 					Helicopter h = new Helicopter(-250 * i, 450);
 					enemies.add(h);
 				} else {
@@ -170,11 +170,13 @@ public class MyGame extends ApplicationAdapter {
 				if (!en.isAlive()) {
 					enemies.remove(en);
 				}
+				en.drawHealth(srend);
 			}
 		} catch (Exception ignored) {
 		}
 		for (Tower tower : twrs) {
 			tower.sprite.draw(batch);
+			tower.drawHealth(srend, twrs);
 			if (tower instanceof RocketTower) {
 				if (!((RocketTower) tower).rockets.isEmpty()) {
 					((RocketTower) tower).rockets.get(0).getSprite().draw(batch);
