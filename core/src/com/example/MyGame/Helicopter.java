@@ -20,6 +20,7 @@ public class Helicopter extends Enemy {
         this.enemy.setSize(75f, 35f);
     }
 
+    @SuppressWarnings("NewApi")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -30,6 +31,7 @@ public class Helicopter extends Enemy {
                 Objects.equals(enemy, that.enemy);
     }
 
+    @SuppressWarnings("NewApi")
     @Override
     public int hashCode() {
         return Objects.hash(blade, enemy, was);
@@ -61,7 +63,7 @@ public class Helicopter extends Enemy {
                     if (super.getS() > -90) {
                         enemy.setOriginCenter();
                         enemy.rotate( -2f);
-                        super.setS((int) (super.getS()-2));
+                        super.setS(super.getS()-2);
                     } else {
                         super.setS(0);
                         super.setVelX(2d);

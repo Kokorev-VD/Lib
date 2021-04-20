@@ -16,7 +16,7 @@ public class RocketTower extends Tower {
     }
 
     @Override
-    public void attack(Enemy en) throws Throwable {
+    public void attack(Enemy en){
         if (rockets.isEmpty() && en.isAlive() && Math.pow(en.enemy.getX() - this.getPosX(), 2) + Math.pow(en.enemy.getX() - this.getPosX(), 2) < Math.pow(500, 2)) {
             Rocket rocket = new Rocket();
             rockets.add(rocket);

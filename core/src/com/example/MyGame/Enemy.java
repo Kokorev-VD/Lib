@@ -31,7 +31,7 @@ public abstract class Enemy {
         this.s = s;
     }
 
-    public void Death() throws Throwable {
+    public void Death(){
         if (health <= 0) {
             alive = false;
             enemy.setTexture(new Texture("empty_texture.png"));
@@ -41,11 +41,11 @@ public abstract class Enemy {
             Rocket.a *=1.3;
         }
     }
-    public void attacked(Tower tower) throws Throwable {
+    public void attacked(Tower tower){
         health-= tower.getDamage();
         this.Death();
     }
-    public void attacked(int damage) throws Throwable {
+    public void attacked(int damage){
         health-=damage;
         this.Death();
     }

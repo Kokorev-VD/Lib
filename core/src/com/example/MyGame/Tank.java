@@ -17,6 +17,7 @@ public class Tank extends Enemy {
         this.enemy.setY(y);
     }
 
+    @SuppressWarnings("NewApi")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -25,6 +26,7 @@ public class Tank extends Enemy {
         return Objects.equals(enemy, tank.enemy);
     }
 
+    @SuppressWarnings("NewApi")
     @Override
     public int hashCode() {
         return Objects.hash(enemy);
@@ -56,7 +58,7 @@ public class Tank extends Enemy {
                     if (super.getS() > -90) {
                         enemy.setOriginCenter();
                         enemy.rotate( -2f);
-                        super.setS((int) (super.getS()-2));
+                        super.setS(super.getS()-2);
                     } else {
                         super.setS(0);
                         super.setVelX(2d);
