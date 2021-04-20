@@ -22,14 +22,17 @@ public class MyGame extends ApplicationAdapter {
 	LinkedList<Tower> twrs;
 	Sprite btn;
 	Sprite btn1;
+	Sprite btn2;
 	ArrayList<Integer> routeX;
 	ArrayList<Integer> routeY;
 	Double velX;
 	Double velY;
+	Bombing boom = new Bombing();
 	int enal = 10;
 	public ShapeRenderer srend;
 	boolean canPlace = false;
 	boolean canPlace1 = false;
+	boolean canPlace2 = false;
 	/*public void PlayScreen(){
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
@@ -95,6 +98,10 @@ public class MyGame extends ApplicationAdapter {
 		btn1.setX(1305);
 		btn1.setY(125);
 		btn1.setSize(150f, 150f);
+		btn2 = new Sprite(new Texture("explosion.png"));
+		btn2.setX(1605);
+		btn2.setY(125);
+		btn2.setSize(150f, 150f);
 		Gdx.input.setInputProcessor(new InputAdapter() {
 			public boolean touchUp(int x, int y, int pointer, int button) {
 				if (canPlace) {
@@ -117,13 +124,18 @@ public class MyGame extends ApplicationAdapter {
 					velY /= 1.16;
 					canPlace1 = false;
 				}
+				if(canPlace2){
+					boom.ability(enemies);
+				}
 				if (x >= 1005 & x <= 1155 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
 					canPlace = true;
 				}
 				if (x >= 1305 & x <= 1455 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
 					canPlace1 = true;
 				}
-
+				if (x >= 1605 & x <= 1755 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
+					canPlace2 = true;
+				}
 				return true;
 			}
 		});
@@ -142,6 +154,7 @@ public class MyGame extends ApplicationAdapter {
 		srend.begin(ShapeRenderer.ShapeType.Filled);
 		btn.draw(batch);
 		btn1.draw(batch);
+		btn2.draw(batch);
 		if (enemies.isEmpty()) {
 			Rocket.a = 1;
 			enal += 5;
