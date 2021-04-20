@@ -132,12 +132,18 @@ public class MyGame extends ApplicationAdapter {
 
 	@Override
 	public void render() {
+		try {
+			Thread.sleep((long)(1000/65-Gdx.graphics.getDeltaTime()));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		batch.begin();
 		batch.draw(new Texture("background.png"), 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		srend.begin(ShapeRenderer.ShapeType.Filled);
 		btn.draw(batch);
 		btn1.draw(batch);
 		if (enemies.isEmpty()) {
+			Rocket.a = 1;
 			enal += 5;
 			Enemy.setA((int) (Enemy.getA() + 50));
 			for (int i = 0; i < enal; i++) {
