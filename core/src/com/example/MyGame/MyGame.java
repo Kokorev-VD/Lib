@@ -126,6 +126,7 @@ public class MyGame extends ApplicationAdapter {
 				}
 				if(canPlace2){
 					boom.ability(enemies);
+					canPlace2 = false;
 				}
 				if (x >= 1005 & x <= 1155 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
 					canPlace = true;
@@ -145,7 +146,7 @@ public class MyGame extends ApplicationAdapter {
 	@Override
 	public void render() {
 		try {
-			Thread.sleep((long)(1000/65-Gdx.graphics.getDeltaTime()));
+			Thread.sleep(1000/100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
