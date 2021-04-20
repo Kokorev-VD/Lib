@@ -32,7 +32,6 @@ public class MyGame extends ApplicationAdapter {
 	public ShapeRenderer srend;
 	boolean canPlace = false;
 	boolean canPlace1 = false;
-	boolean canPlace2 = false;
 	/*public void PlayScreen(){
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
@@ -124,10 +123,6 @@ public class MyGame extends ApplicationAdapter {
 					velY /= 1.16;
 					canPlace1 = false;
 				}
-				if(canPlace2){
-					boom.ability(enemies);
-					canPlace2 = false;
-				}
 				if (x >= 1005 & x <= 1155 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
 					canPlace = true;
 				}
@@ -135,7 +130,7 @@ public class MyGame extends ApplicationAdapter {
 					canPlace1 = true;
 				}
 				if (x >= 1605 & x <= 1755 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275) {
-					canPlace2 = true;
+					boom.ability(enemies);
 				}
 				return true;
 			}
