@@ -30,7 +30,7 @@ public class MyGame extends ApplicationAdapter {
 	Double velY;
 	Bombing boom = new Bombing();
 	static int money = 100;
-	BitmapFont font = new BitmapFont();
+	BitmapFont font;
 	int enal = 10;
 	int abilityCost = 25;
 	public ShapeRenderer srend;
@@ -52,10 +52,11 @@ public class MyGame extends ApplicationAdapter {
 	@Override
 	public void create() {
 		//PlayScreen();
-		batch = new SpriteBatch();
+		font = new BitmapFont();
 		font.getData().setScale(3);
 		font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		font.setColor(Color.CYAN);
+		batch = new SpriteBatch();
 		twrs = new LinkedList<>();
 		Tower tower = new Laser();
 		tower.setPosX(-1000);
@@ -161,7 +162,12 @@ public class MyGame extends ApplicationAdapter {
 			e.printStackTrace();
 		}
 		batch.begin();
+
 		batch.draw(new Texture("background.png"), 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		font.draw(batch, "Money:" + String.valueOf(money), 75, 100);
+		font.draw(batch, "Cost:10", 1005, 100);
+		font.draw(batch, "Cost:50", 1305, 100);
+		font.draw(batch, "Cost:" + String.valueOf(abilityCost), 1605, 100);
 		srend.begin(ShapeRenderer.ShapeType.Filled);
 		btn.draw(batch);
 		btn1.draw(batch);
@@ -213,7 +219,6 @@ public class MyGame extends ApplicationAdapter {
 				}
 			}
 		}
-		font.draw(batch, "Hello world!", 100, 100);
 		srend.end();
 		batch.end();
 	}

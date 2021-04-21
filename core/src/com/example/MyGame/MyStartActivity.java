@@ -16,6 +16,7 @@ public class MyStartActivity extends ApplicationAdapter {
     public boolean pressed = false;
     @Override
     public void create() {
+
         bg = new Texture("bge.png");
         batch = new SpriteBatch();
         btn = new Sprite((new Texture("btn.png")));
@@ -47,11 +48,13 @@ public class MyStartActivity extends ApplicationAdapter {
         batch.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         exit.draw(batch);
         btn.draw(batch);
+
         batch.end();
     }
 
     @Override
     public void dispose() {
         batch.dispose();
+
     }
 }
