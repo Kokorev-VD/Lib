@@ -53,6 +53,8 @@ public class MyGame extends ApplicationAdapter {
 	public void create() {
 		//PlayScreen();
 		batch = new SpriteBatch();
+		font.getData().setScale(3);
+		font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 		font.setColor(Color.CYAN);
 		twrs = new LinkedList<>();
 		Tower tower = new Laser();
@@ -211,6 +213,7 @@ public class MyGame extends ApplicationAdapter {
 				}
 			}
 		}
+		font.draw(batch, "Hello world!", 100, 100);
 		srend.end();
 		batch.end();
 	}
@@ -218,6 +221,7 @@ public class MyGame extends ApplicationAdapter {
 	@Override
 	public void dispose() {
 		batch.dispose();
+		font.dispose();
 		bg.dispose();
 	}
 
