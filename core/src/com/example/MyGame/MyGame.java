@@ -6,38 +6,24 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MyGame extends ApplicationAdapter implements InputProcessor {
 	Batch batch;
 	Texture bg;
-	Actor jet;
-	Stage stage;
-	TiledMap tiledMap;
-	OrthographicCamera camera;
-	TiledMapRenderer tiledMapRenderer;
+	Map map;
 	LinkedList<Enemy> enemies;
 	LinkedList<Tower> twrs;
 	Sprite btn;
 	Sprite btn1;
 	Sprite btn2;
-	ArrayList<Integer> routeX;
-	ArrayList<Integer> routeY;
 	Double velX;
 	Double velY;
 	Bombing boom = new Bombing();
@@ -49,20 +35,11 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	boolean canPlace = false;
 	boolean canPlace1 = false;
 	public void PlayScreen(){
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-		jet = new Actor();
-		stage = new Stage();
-		stage.addActor(jet);
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, (float) (w/2.2), (float) (h/1.8));
-		camera.update();
-		tiledMap = new TmxMapLoader().load("try.tmx");
-		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 		Gdx.input.setInputProcessor(this);
 	}
 	@Override
 	public void create() {
+		map = new Map("try.tmx");
 		PlayScreen();
 		font = new BitmapFont();
 		font.getData().setScale(3);
@@ -74,25 +51,6 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		tower.setPosX(3000);
 		tower.setPosY(3000);
 		twrs.add(tower);
-
-		routeX = new ArrayList<>();
-		routeY = new ArrayList<>();
-
-		routeX.add(300);
-		routeX.add(300);
-		routeX.add(750);
-		routeX.add(750);
-		routeX.add(1300);
-		routeX.add(1300);
-		routeX.add(2160);
-
-		routeY.add(550);
-		routeY.add(880);
-		routeY.add(880);
-		routeY.add(430);
-		routeY.add(430);
-		routeY.add(630);
-		routeY.add(630);
 
 		enemies = new LinkedList<>();
 
@@ -171,11 +129,11 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		camera.update();
+		map.camera.update();
 
-		tiledMapRenderer.setView(camera.combined,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-		tiledMapRenderer.render();
-		stage.draw();
+		map.tiledMapRenderer.setView(map.camera.combined,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		map.tiledMapRenderer.render();
+		map.stage.draw();
 		try {
 			Thread.sleep(1000/100);
 		} catch (InterruptedException e) {
@@ -216,7 +174,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 		for (Enemy en : enemies) {
-			en.move(routeX, routeY);
+			en.move(map.getRouteX(), map.getRouteY());
 			en.enemy.draw(batch);
 			en.blade.draw(batch);
 		}
