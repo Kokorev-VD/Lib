@@ -31,46 +31,87 @@ public class Tank extends Enemy {
     public int hashCode() {
         return Objects.hash(enemy);
     }
+    private void rotation1() {
+        switch (super.getIndexX()) {
+            case 1:
+            case 4:
+            case 5:
+                if (super.getS() < 90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 2:
+            case 3:
+            case 6:
+                if (super.getS() > -90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+        }
+    }
 
+    private void rotation2() {
+        switch (super.getIndexX()) {
+            case 3:
+            case 4:
+            case 5:
+                if (super.getS() < 90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 1:
+            case 2:
+            case 6:
+                if (super.getS() > -90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+        }
+    }
     @Override
-    public void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY){
+    public void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY, String path){
         if (was) {
             super.setVelX((double) 0);
             super.setVelY((double) 0);
-            switch (super.getIndexX()) {
-                case 1:
-                case 4:
-                case 5:
-                    if (super.getS() < 90) {
-                        enemy.setOriginCenter();
-                        enemy.rotate(2f);
-                        super.setS(super.getS() + 2);
-                    } else {
-                        super.setS(0);
-                        super.setVelX(2d);
-                        super.setVelY(2d);
-                        was = false;
-                    }
-                    break;
-                case 2:
-                case 3:
-                case 6:
-                    if (super.getS() > -90) {
-                        enemy.setOriginCenter();
-                        enemy.rotate( -2f);
-                        super.setS(super.getS()-2);
-                    } else {
-                        super.setS(0);
-                        super.setVelX(2d);
-                        super.setVelY(2d);
-                        was = false;
-                    }
-                    break;
+            if (path.equals("try.tmx")) {
+                rotation1();
+            } else if (path.equals("map1.tmx")) {
+                rotation2();
             }
-        } else {
-            super.setVelX(2d);
-            super.setVelY(2d);
+            else {
+                super.setVelX(2d);
+                super.setVelY(2d);
+            }
         }
+
         if ((int) enemy.getX() > routeX.get(super.getIndexX())) {
             enemy.setX((float) (enemy.getX() - super.getVelX()));
         } else if ((int) enemy.getX() < routeX.get(super.getIndexX())) {

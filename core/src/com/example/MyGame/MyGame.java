@@ -39,7 +39,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	}
 	@Override
 	public void create() {
-		map = new Map("try.tmx");
+		map = new Map("map1.tmx");
 		PlayScreen();
 		font = new BitmapFont();
 		font.getData().setScale(3);
@@ -58,10 +58,10 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		velY = 0.8;
 		for (int i = 0; i < 10; i++) {
 			if (Math.random() < 0.5) {
-				Helicopter h = new Helicopter(-250 * i, 500);
+				Helicopter h = new Helicopter(-250 * i, map.getY());
 				enemies.add(h);
 			} else {
-				Tank t = new Tank(-250 * i, 500);
+				Tank t = new Tank(-250 * i, map.getY());
 				enemies.add(t);
 			}
 		}
@@ -174,7 +174,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 		for (Enemy en : enemies) {
-			en.move(map.getRouteX(), map.getRouteY());
+			en.move(map.getRouteX(), map.getRouteY(), "map1.tmx");
 			en.enemy.draw(batch);
 			en.blade.draw(batch);
 		}

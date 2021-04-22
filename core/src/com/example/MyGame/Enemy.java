@@ -95,7 +95,7 @@ public abstract class Enemy {
         this.indexY = indexY;
     }
 
-    public abstract void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY);
+    public abstract void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY, String path);
     public void drawHealth(ShapeRenderer srend){
         srend.setColor(Color.GREEN);
         srend.rect(enemy.getX(), enemy.getY()-50, health/a*75, 10);

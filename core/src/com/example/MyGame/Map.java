@@ -19,6 +19,11 @@ public class Map {
     TiledMap tiledMap;
     OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
+    private int y;
+
+    public int getY() {
+        return y;
+    }
 
     public ArrayList<Integer> getRouteX() {
         return routeX;
@@ -35,7 +40,7 @@ public class Map {
         stage = new Stage();
         stage.addActor(jet);
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, (float) (w/2.2), (float) (h/1.8));
+        camera.setToOrtho(false, (float) (w/2.2), (float) (h/1.75));
         camera.update();
         tiledMap = new TmxMapLoader().load(path);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
@@ -54,8 +59,29 @@ public class Map {
                 routeY.add(880);
                 routeY.add(430);
                 routeY.add(430);
-                routeY.add(630);
-                routeY.add(630);
+                routeY.add(620);
+                routeY.add(620);
+
+                y = 500;
+                break;
+            case "map1.tmx":
+                routeX.add(1600);
+                routeX.add(1600);
+                routeX.add(370);
+                routeX.add(370);
+                routeX.add(1700);
+                routeX.add(1700);
+                routeX.add(2160);
+
+                routeY.add(980);
+                routeY.add(780);
+                routeY.add(780);
+                routeY.add(370);
+                routeY.add(370);
+                routeY.add(600);
+                routeY.add(600);
+
+                y = 980;
                 break;
         }
     }
