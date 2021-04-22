@@ -59,8 +59,8 @@ public class MyGame extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		twrs = new LinkedList<>();
 		Tower tower = new Laser();
-		tower.setPosX(-1000);
-		tower.setPosY(-1000);
+		tower.setPosX(3000);
+		tower.setPosY(3000);
 		twrs.add(tower);
 
 		routeX = new ArrayList<>();

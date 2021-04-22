@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public abstract class Enemy {
     public Sprite enemy;
     public Sprite blade;
-    private float health = a;
+    protected float health;
     private static float a = 100;
     private int indexX = 0;
     private int indexY = 0;
@@ -18,6 +18,10 @@ public abstract class Enemy {
     private Double velX = 2d;
     private Double velY = 2d;
     private boolean alive = true;
+
+    {
+        health = a;
+    }
 
     public boolean isAlive() {
         return alive;
