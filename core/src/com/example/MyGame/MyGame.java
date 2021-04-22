@@ -3,22 +3,34 @@ package com.example.MyGame;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class MyGame extends ApplicationAdapter {
-	SpriteBatch batch;
+public class MyGame extends ApplicationAdapter implements InputProcessor {
+	Batch batch;
 	Texture bg;
-	/*TiledMap tiledMap;
+	Actor jet;
+	Stage stage;
+	TiledMap tiledMap;
 	OrthographicCamera camera;
-	OrthogonalTiledMapRenderer renderer;*/
+	TiledMapRenderer tiledMapRenderer;
 	LinkedList<Enemy> enemies;
 	LinkedList<Tower> twrs;
 	Sprite btn;
@@ -36,22 +48,22 @@ public class MyGame extends ApplicationAdapter {
 	public ShapeRenderer srend;
 	boolean canPlace = false;
 	boolean canPlace1 = false;
-	/*public void PlayScreen(){
+	public void PlayScreen(){
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
-
+		jet = new Actor();
+		stage = new Stage();
+		stage.addActor(jet);
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, w, h);
+		camera.setToOrtho(false, (float) (w/2.2), (float) (h/1.8));
 		camera.update();
-
-		tiledMap = new TmxMapLoader().load("map.tmx");
-		renderer = new OrthogonalTiledMapRenderer(tiledMap);
-
-		camera.position.set(0, 3200, 0);
-	}*/
+		tiledMap = new TmxMapLoader().load("try.tmx");
+		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+		Gdx.input.setInputProcessor(this);
+	}
 	@Override
 	public void create() {
-		//PlayScreen();
+		PlayScreen();
 		font = new BitmapFont();
 		font.getData().setScale(3);
 		font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -74,13 +86,13 @@ public class MyGame extends ApplicationAdapter {
 		routeX.add(1300);
 		routeX.add(2160);
 
-		routeY.add(450);
-		routeY.add(800);
-		routeY.add(800);
-		routeY.add(350);
-		routeY.add(350);
-		routeY.add(580);
-		routeY.add(580);
+		routeY.add(550);
+		routeY.add(880);
+		routeY.add(880);
+		routeY.add(430);
+		routeY.add(430);
+		routeY.add(630);
+		routeY.add(630);
 
 		enemies = new LinkedList<>();
 
@@ -88,10 +100,10 @@ public class MyGame extends ApplicationAdapter {
 		velY = 0.8;
 		for (int i = 0; i < 10; i++) {
 			if (Math.random() < 0.5) {
-				Helicopter h = new Helicopter(-250 * i, 450);
+				Helicopter h = new Helicopter(-250 * i, 500);
 				enemies.add(h);
 			} else {
-				Tank t = new Tank(-250 * i, 450);
+				Tank t = new Tank(-250 * i, 500);
 				enemies.add(t);
 			}
 		}
@@ -156,6 +168,14 @@ public class MyGame extends ApplicationAdapter {
 
 	@Override
 	public void render() {
+		Gdx.gl.glClearColor(0, 0, 0, 0);
+		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		camera.update();
+
+		tiledMapRenderer.setView(camera.combined,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		tiledMapRenderer.render();
+		stage.draw();
 		try {
 			Thread.sleep(1000/100);
 		} catch (InterruptedException e) {
@@ -163,11 +183,10 @@ public class MyGame extends ApplicationAdapter {
 		}
 		batch.begin();
 
-		batch.draw(new Texture("background.png"), 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		font.draw(batch, "Money:" + String.valueOf(money), 75, 100);
+		font.draw(batch, "Money:" + money, 75, 100);
 		font.draw(batch, "Cost:10", 1005, 100);
 		font.draw(batch, "Cost:50", 1305, 100);
-		font.draw(batch, "Cost:" + String.valueOf(abilityCost), 1605, 100);
+		font.draw(batch, "Cost:" + abilityCost, 1605, 100);
 		srend.begin(ShapeRenderer.ShapeType.Filled);
 		btn.draw(batch);
 		btn1.draw(batch);
@@ -230,4 +249,43 @@ public class MyGame extends ApplicationAdapter {
 		bg.dispose();
 	}
 
+	@Override
+	public boolean keyDown(int keycode) {
+		return false;
+	}
+
+	@Override
+	public boolean keyUp(int keycode) {
+		return false;
+	}
+
+	@Override
+	public boolean keyTyped(char character) {
+		return false;
+	}
+
+	@Override
+	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		return false;
+	}
+
+	@Override
+	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		return false;
+	}
+
+	@Override
+	public boolean touchDragged(int screenX, int screenY, int pointer) {
+		return false;
+	}
+
+	@Override
+	public boolean mouseMoved(int screenX, int screenY) {
+		return false;
+	}
+
+	@Override
+	public boolean scrolled(float amountX, float amountY) {
+		return false;
+	}
 }
