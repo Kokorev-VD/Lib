@@ -2,6 +2,7 @@ package com.example.MyGame;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -17,7 +18,18 @@ public class LevelActivity extends ApplicationAdapter {
     BitmapFont font;
     ArrayList<MyButton> btns;
 
+    public boolean isPressed() {
+        return pressed;
+    }
+
+    public MyButton getLast() {
+        return last;
+    }
+
+    boolean pressed = false;
+    MyButton last;
     int level = 1;
+
     @Override
     public void create() {
         btns = new ArrayList<>();
@@ -33,7 +45,20 @@ public class LevelActivity extends ApplicationAdapter {
                 level++;
             }
         }
-
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            public boolean touchUp(int x, int y, int pointer, int button) {
+                System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                System.out.println(x);
+                System.out.println(1100-y);
+                for (MyButton btn:btns){
+                    if(btn.getX() + 200 > x && btn.getX() - 200 < x && btn.getY() + 125 > 1100 - y && btn.getY() - 125 < 1100 - y){
+                        pressed = true;
+                        last = btn;
+                    }
+                }
+                return true;
+            }
+    });
     }
 
     @Override

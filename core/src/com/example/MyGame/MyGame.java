@@ -39,7 +39,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	}
 	@Override
 	public void create() {
-		map = new Map("map1.tmx");
+		map = new Map();
 		PlayScreen();
 		font = new BitmapFont();
 		font.getData().setScale(3);

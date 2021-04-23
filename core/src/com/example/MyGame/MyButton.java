@@ -3,7 +3,8 @@ package com.example.MyGame;
 public class MyButton {
     private final int x;
     private final int y;
-    private int level = 1;
+    private int level;
+
     public int getX() {
         return x;
     }
