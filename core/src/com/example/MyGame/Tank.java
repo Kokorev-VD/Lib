@@ -96,19 +96,81 @@ public class Tank extends Enemy {
                 break;
         }
     }
+    public void rotation3() {
+        switch (super.getIndexX()) {
+            case 2:
+            case 3:
+                if (super.getS() < 45) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 1:
+            case 4:
+                if (super.getS() > -45) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 6:
+                if (super.getS() < 90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+
+            case 5:
+                if (super.getS() > -90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+        }
+    }
     @Override
     public void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY, String path){
         if (was) {
             super.setVelX((double) 0);
             super.setVelY((double) 0);
-            if (path.equals("try.tmx")) {
-                rotation1();
-            } else if (path.equals("map1.tmx")) {
-                rotation2();
-            }
-            else {
-                super.setVelX(2d);
-                super.setVelY(2d);
+            switch (path) {
+                case "try.tmx":
+                    rotation1();
+                    break;
+                case "map1.tmx":
+                    rotation2();
+                    break;
+                case "map2.tmx":
+                    System.out.println("LMAO");
+                    rotation3();
+                    break;
+                default:
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    break;
             }
         }
 
