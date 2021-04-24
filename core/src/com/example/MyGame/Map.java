@@ -84,23 +84,23 @@ public class Map {
                 y = 980;
                 break;
             case "map2.tmx":
-                routeX.add(1600);
-                routeX.add(1600);
-                routeX.add(370);
-                routeX.add(370);
+                routeX.add(0);
+                routeX.add(350);
+                routeX.add(900);
+                routeX.add(1250);
                 routeX.add(1700);
                 routeX.add(1700);
                 routeX.add(2160);
 
-                routeY.add(980);
-                routeY.add(780);
-                routeY.add(780);
-                routeY.add(370);
-                routeY.add(370);
-                routeY.add(600);
-                routeY.add(600);
+                routeY.add(820);
+                routeY.add(530);
+                routeY.add(530);
+                routeY.add(820);
+                routeY.add(820);
+                routeY.add(550);
+                routeY.add(550);
 
-                y = 980;
+                y = 820;
                 break;
         }
     }

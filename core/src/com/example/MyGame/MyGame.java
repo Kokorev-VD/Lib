@@ -161,10 +161,10 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			Enemy.setA((int) (Enemy.getA() + 50));
 			for (int i = 0; i < enal; i++) {
 				if (Math.random() < 0.5) {
-					Helicopter h = new Helicopter(-250 * i, 450);
+					Helicopter h = new Helicopter(-250 * i, map.getY());
 					enemies.add(h);
 				} else {
-					Tank t = new Tank(-250 * i, 450);
+					Tank t = new Tank(-250 * i, map.getY());
 					enemies.add(t);
 				}
 			}
@@ -180,7 +180,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 		for (Enemy en : enemies) {
-			en.move(map.getRouteX(), map.getRouteY(), "map1.tmx");
+			en.move(map.getRouteX(), map.getRouteY(), path);
 			en.enemy.draw(batch);
 			en.blade.draw(batch);
 		}

@@ -105,8 +105,8 @@ public class Helicopter extends Enemy {
     }
     public void rotation3(){
         switch (super.getIndexX()) {
-            case 1:
-            case 4:
+            case 2:
+            case 3:
                 if (super.getS() < 45) {
                     enemy.setOriginCenter();
                     enemy.rotate(2f);
@@ -118,8 +118,8 @@ public class Helicopter extends Enemy {
                     was = false;
                 }
                 break;
-            case 2:
-            case 3:
+            case 1:
+            case 4:
                 if (super.getS() > -45) {
                     enemy.setOriginCenter();
                     enemy.rotate(-2f);
@@ -131,7 +131,7 @@ public class Helicopter extends Enemy {
                     was = false;
                 }
                 break;
-            case 5:
+            case 6:
                 if (super.getS() < 90) {
                     enemy.setOriginCenter();
                     enemy.rotate(2f);
@@ -144,7 +144,7 @@ public class Helicopter extends Enemy {
                 }
                 break;
 
-            case 6:
+            case 5:
                 if (super.getS() > -90) {
                     enemy.setOriginCenter();
                     enemy.rotate(-2f);
@@ -163,17 +163,21 @@ public class Helicopter extends Enemy {
         if (was) {
             super.setVelX((double) 0);
             super.setVelY((double) 0);
-            if (path.equals("try.tmx")) {
-                rotation1();
-            } else if (path.equals("map1.tmx")) {
-                rotation2();
-            }
-            else if(path.equals("map2.tmx")){
-                rotation3();
-            }
-            else {
-                super.setVelX(2d);
-                super.setVelY(2d);
+            switch (path) {
+                case "try.tmx":
+                    rotation1();
+                    break;
+                case "map1.tmx":
+                    rotation2();
+                    break;
+                case "map2.tmx":
+                    System.out.println("LMAO");
+                    rotation3();
+                    break;
+                default:
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    break;
             }
         }
 
