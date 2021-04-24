@@ -27,6 +27,7 @@ public class AndroidLevel extends AndroidApplication {
         timer.schedule(new UpdateTimeTask1(), 0, 4);
         paths.add("try.tmx");
         paths.add("map1.tmx");
+        paths.add("map2.tmx");
     }
     private class UpdateTimeTask1 extends TimerTask {
         @Override

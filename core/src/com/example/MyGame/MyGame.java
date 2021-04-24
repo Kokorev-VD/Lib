@@ -26,6 +26,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	Sprite btn2;
 	Double velX;
 	Double velY;
+	String path;
 	Bombing boom = new Bombing();
 	static int money = 100;
 	BitmapFont font;
@@ -37,9 +38,14 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	public void PlayScreen(){
 		Gdx.input.setInputProcessor(this);
 	}
+
+	public MyGame(String path) {
+		this.path = path;
+	}
+
 	@Override
 	public void create() {
-		map = new Map();
+		map = new Map(path);
 		PlayScreen();
 		font = new BitmapFont();
 		font.getData().setScale(3);

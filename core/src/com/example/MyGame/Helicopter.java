@@ -103,7 +103,61 @@ public class Helicopter extends Enemy {
                 break;
         }
     }
+    public void rotation3(){
+        switch (super.getIndexX()) {
+            case 1:
+            case 4:
+                if (super.getS() < 45) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 2:
+            case 3:
+                if (super.getS() > -45) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 5:
+                if (super.getS() < 90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
 
+            case 6:
+                if (super.getS() > -90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+        }
+    }
     @Override
     public void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY, String path) {
         if (was) {
@@ -113,6 +167,9 @@ public class Helicopter extends Enemy {
                 rotation1();
             } else if (path.equals("map1.tmx")) {
                 rotation2();
+            }
+            else if(path.equals("map2.tmx")){
+                rotation3();
             }
             else {
                 super.setVelX(2d);

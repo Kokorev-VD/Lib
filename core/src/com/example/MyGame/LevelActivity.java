@@ -47,9 +47,6 @@ public class LevelActivity extends ApplicationAdapter {
         }
         Gdx.input.setInputProcessor(new InputAdapter() {
             public boolean touchUp(int x, int y, int pointer, int button) {
-                System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-                System.out.println(x);
-                System.out.println(1100-y);
                 for (MyButton btn:btns){
                     if(btn.getX() + 200 > x && btn.getX() - 200 < x && btn.getY() + 125 > 1100 - y && btn.getY() - 125 < 1100 - y){
                         pressed = true;

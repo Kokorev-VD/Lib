@@ -12,6 +12,7 @@ public class AndroidGame extends AndroidApplication {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-        initialize(new MyGame(), config);
+        String path = getIntent().getStringExtra("path");
+        initialize(new MyGame(path), config);
     }
 }
