@@ -18,7 +18,8 @@ public abstract class Enemy {
     private Double velX = 2d;
     private Double velY = 2d;
     private boolean alive = true;
-
+    private ArrayList<Integer> routeX;
+    private ArrayList<Integer> routeY;
     {
         health = a;
     }

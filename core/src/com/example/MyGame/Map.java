@@ -85,9 +85,9 @@ public class Map {
                 break;
             case "map2.tmx":
                 routeX.add(0);
-                routeX.add(350);
-                routeX.add(900);
-                routeX.add(1250);
+                routeX.add(390);
+                routeX.add(930);
+                routeX.add(1220);
                 routeX.add(1700);
                 routeX.add(1700);
                 routeX.add(2160);
@@ -102,6 +102,7 @@ public class Map {
 
                 y = 820;
                 break;
+
         }
     }
 }
