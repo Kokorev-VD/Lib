@@ -14,12 +14,15 @@ import java.util.ArrayList;
 public class Map {
     protected ArrayList<Integer> routeX = new ArrayList<>();
     protected ArrayList<Integer> routeY = new ArrayList<>();
+    protected ArrayList<Integer> routeX1 = new ArrayList<>();
+    protected ArrayList<Integer> routeY1 = new ArrayList<>();
     Actor jet;
     Stage stage;
     TiledMap tiledMap;
     OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
     private int y;
+    private int y1;
 
     public int getY() {
         return y;
@@ -31,6 +34,18 @@ public class Map {
 
     public ArrayList<Integer> getRouteY() {
         return routeY;
+    }
+
+    public int getY1() {
+        return y1;
+    }
+
+    public ArrayList<Integer> getRouteX1() {
+        return routeX1;
+    }
+
+    public ArrayList<Integer> getRouteY1() {
+        return routeY1;
     }
 
     public Map(String path){
@@ -85,7 +100,7 @@ public class Map {
                 break;
             case "map2.tmx":
                 routeX.add(0);
-                routeX.add(390);
+                routeX.add(350);
                 routeX.add(930);
                 routeX.add(1220);
                 routeX.add(1700);
@@ -102,7 +117,41 @@ public class Map {
 
                 y = 820;
                 break;
+            case "map3.tmx":
+                routeX.add(320);
+                routeX.add(930);
+                routeX.add(1220);
+                routeX.add(1700);
+                routeX.add(1700);
+                routeX.add(2160);
 
+                routeY.add(820);
+                routeY.add(530);
+                routeY.add(530);
+                routeY.add(820);
+                routeY.add(820);
+                routeY.add(550);
+                routeY.add(550);
+
+                routeX1.add(320);
+                routeX1.add(930);
+                routeX1.add(1220);
+                routeX1.add(1700);
+                routeX1.add(1700);
+                routeX1.add(2160);
+
+                routeY1.add(120);
+                routeY1.add(530);
+                routeY1.add(530);
+                routeY1.add(820);
+                routeY1.add(820);
+                routeY1.add(550);
+                routeY1.add(550);
+
+                y = 820;
+
+                y1 = 120;
+                break;
         }
     }
 }

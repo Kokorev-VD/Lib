@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Tank extends Enemy {
@@ -151,8 +152,118 @@ public class Tank extends Enemy {
                 break;
         }
     }
+    public void rotation4(){
+        switch (super.getIndexX()) {
+            case 2:
+            case 3:
+                if (super.getS() < 45) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 1:
+            case 4:
+                if (super.getS() > -45) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 6:
+                if (super.getS() < 90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+
+            case 5:
+                if (super.getS() > -90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+        }
+    }
+    public void rotation5(){
+        switch (super.getIndexX()) {
+            case 2:
+            case 3:
+                if (super.getS() < 45) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 1:
+            case 4:
+                if (super.getS() > -45) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+            case 6:
+                if (super.getS() < 90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(2f);
+                    super.setS(super.getS() + 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+
+            case 5:
+                if (super.getS() > -90) {
+                    enemy.setOriginCenter();
+                    enemy.rotate(-2f);
+                    super.setS(super.getS() - 2);
+                } else {
+                    super.setS(0);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
+                    was = false;
+                }
+                break;
+        }
+    }
     @Override
-    public void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY, String path){
+    public void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY, String path, LinkedList<Enemy> enemies){
         if (was) {
             super.setVelX((double) 0);
             super.setVelY((double) 0);
@@ -164,8 +275,15 @@ public class Tank extends Enemy {
                     rotation2();
                     break;
                 case "map2.tmx":
-                    System.out.println("LMAO");
                     rotation3();
+                    break;
+                case "map3.tmx":
+                    if(enemies.indexOf(this) % 2 == 0){
+                        rotation4();
+                    }
+                    else {
+                        rotation5();
+                    }
                     break;
                 default:
                     super.setVelX(2d);

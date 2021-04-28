@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public abstract class Enemy {
     public Sprite enemy;
@@ -18,8 +19,6 @@ public abstract class Enemy {
     private Double velX = 2d;
     private Double velY = 2d;
     private boolean alive = true;
-    private ArrayList<Integer> routeX;
-    private ArrayList<Integer> routeY;
     {
         health = a;
     }
@@ -96,7 +95,7 @@ public abstract class Enemy {
         this.indexY = indexY;
     }
 
-    public abstract void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY, String path);
+    public abstract void move(ArrayList<Integer> routeX, ArrayList<Integer> routeY, String path, LinkedList<Enemy> enemies);
     public void drawHealth(ShapeRenderer srend){
         srend.setColor(Color.GREEN);
         srend.rect(enemy.getX(), enemy.getY()-50, health/a*75, 10);
