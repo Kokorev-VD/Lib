@@ -155,32 +155,7 @@ public class Tank extends Enemy {
     public void rotation4(){
         switch (super.getIndexX()) {
             case 2:
-            case 3:
-                if (super.getS() < 45) {
-                    enemy.setOriginCenter();
-                    enemy.rotate(2f);
-                    super.setS(super.getS() + 2);
-                } else {
-                    super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
-                    was = false;
-                }
-                break;
-            case 1:
             case 4:
-                if (super.getS() > -45) {
-                    enemy.setOriginCenter();
-                    enemy.rotate(-2f);
-                    super.setS(super.getS() - 2);
-                } else {
-                    super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
-                    was = false;
-                }
-                break;
-            case 6:
                 if (super.getS() < 90) {
                     enemy.setOriginCenter();
                     enemy.rotate(2f);
@@ -192,8 +167,8 @@ public class Tank extends Enemy {
                     was = false;
                 }
                 break;
-
-            case 5:
+            case 1:
+            case 3:
                 if (super.getS() > -90) {
                     enemy.setOriginCenter();
                     enemy.rotate(-2f);
@@ -209,33 +184,8 @@ public class Tank extends Enemy {
     }
     public void rotation5(){
         switch (super.getIndexX()) {
-            case 2:
-            case 3:
-                if (super.getS() < 45) {
-                    enemy.setOriginCenter();
-                    enemy.rotate(2f);
-                    super.setS(super.getS() + 2);
-                } else {
-                    super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
-                    was = false;
-                }
-                break;
             case 1:
-            case 4:
-                if (super.getS() > -45) {
-                    enemy.setOriginCenter();
-                    enemy.rotate(-2f);
-                    super.setS(super.getS() - 2);
-                } else {
-                    super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
-                    was = false;
-                }
-                break;
-            case 6:
+            case 3:
                 if (super.getS() < 90) {
                     enemy.setOriginCenter();
                     enemy.rotate(2f);
@@ -247,8 +197,8 @@ public class Tank extends Enemy {
                     was = false;
                 }
                 break;
-
-            case 5:
+            case 2:
+            case 4:
                 if (super.getS() > -90) {
                     enemy.setOriginCenter();
                     enemy.rotate(-2f);

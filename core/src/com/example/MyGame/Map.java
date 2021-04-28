@@ -118,37 +118,31 @@ public class Map {
                 y = 820;
                 break;
             case "map3.tmx":
-                routeX.add(320);
-                routeX.add(930);
-                routeX.add(1220);
-                routeX.add(1700);
-                routeX.add(1700);
+                routeX.add(560);
+                routeX.add(560);
+                routeX.add(1550);
+                routeX.add(1550);
                 routeX.add(2160);
 
-                routeY.add(820);
+                routeY.add(900);
                 routeY.add(530);
                 routeY.add(530);
-                routeY.add(820);
-                routeY.add(820);
-                routeY.add(550);
-                routeY.add(550);
+                routeY.add(250);
+                routeY.add(250);
 
-                routeX1.add(320);
-                routeX1.add(930);
-                routeX1.add(1220);
-                routeX1.add(1700);
-                routeX1.add(1700);
+                routeX1.add(560);
+                routeX1.add(560);
+                routeX1.add(1550);
+                routeX1.add(1550);
                 routeX1.add(2160);
 
                 routeY1.add(120);
                 routeY1.add(530);
                 routeY1.add(530);
-                routeY1.add(820);
-                routeY1.add(820);
-                routeY1.add(550);
-                routeY1.add(550);
+                routeY1.add(980);
+                routeY1.add(980);
 
-                y = 820;
+                y = 900;
 
                 y1 = 120;
                 break;
