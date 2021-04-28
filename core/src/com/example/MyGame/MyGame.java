@@ -65,19 +65,20 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		for (int i = 0; i < 10; i++) {
 			if (Math.random() < 0.5) {
 				Helicopter h;
-				if(i%2==0) {
-					h = new Helicopter(-250 * i, map.getY());
-				}else{
-					h = new Helicopter(-250 * i, map.getY1());
+				if(i%2 == 0) {
+					h = new Helicopter(-250 * i, map.getY(), i % 2);
+				}
+				else {
+					h = new Helicopter(-250 * i, map.getY1(), i % 2);
 				}
 				enemies.add(h);
 			} else {
 				Tank t;
-				if(i%2==0) {
-					t = new Tank(-250 * i, map.getY());
+				if(i%2 == 0){
+					t = new Tank(-250 * i, map.getY(), i%2);
 				}
 				else{
-					t = new Tank(-250 * i, map.getY1());
+					t = new Tank(-250 * i, map.getY1(), i%2);
 				}
 				enemies.add(t);
 			}
@@ -173,19 +174,20 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			for (int i = 0; i < enal; i++) {
 				if (Math.random() < 0.5) {
 					Helicopter h;
-					if(i%2==0) {
-						h = new Helicopter(-250 * i, map.getY());
-					}else{
-						h = new Helicopter(-250 * i, map.getY1());
+					if(i%2 == 0) {
+						h = new Helicopter(-250 * i, map.getY(), i % 2);
+					}
+					else {
+						h = new Helicopter(-250 * i, map.getY1(), i % 2);
 					}
 					enemies.add(h);
 				} else {
 					Tank t;
-					if(i%2==0) {
-						t = new Tank(-250 * i, map.getY());
+					if(i%2 == 0){
+						t = new Tank(-250 * i, map.getY(), i%2);
 					}
 					else{
-						t = new Tank(-250 * i, map.getY1());
+						t = new Tank(-250 * i, map.getY1(), i%2);
 					}
 					enemies.add(t);
 				}
@@ -202,7 +204,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 		for (Enemy en : enemies) {
-			if(enemies.indexOf(en) % 2 == 0) {
+			if(en.i == 0) {
 				en.move(map.getRouteX(), map.getRouteY(), path, enemies);
 			}
 			else{

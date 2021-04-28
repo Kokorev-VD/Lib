@@ -19,6 +19,7 @@ public abstract class Enemy {
     private Double velX = 2d;
     private Double velY = 2d;
     private boolean alive = true;
+    int i;
     {
         health = a;
     }

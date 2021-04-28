@@ -10,7 +10,8 @@ import java.util.Objects;
 public class Tank extends Enemy {
     boolean was = false;
 
-    public Tank(int x, int y) {
+    public Tank(int x, int y, int num) {
+        i = num;
         this.enemy = new Sprite(new Texture("tank.png"));
         this.enemy.setSize(50f, 50f);
         super.blade = new Sprite(new Texture("empty_texture.png"));

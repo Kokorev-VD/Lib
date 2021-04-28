@@ -10,8 +10,8 @@ import java.util.Objects;
 public class Helicopter extends Enemy {
 
     private boolean was = false;
-
-    public Helicopter(int x, int y) {
+    public Helicopter(int x, int y, int num) {
+        i = num;
         this.blade = new Sprite(new Texture("blades.png"));
         this.enemy = new Sprite(new Texture("helicopter.png"));
         this.blade.setX(x);
