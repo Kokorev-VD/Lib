@@ -172,27 +172,25 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			enal += 5;
 			Enemy.setA((int) (Enemy.getA() + 50));
 			for (int i = 0; i < enal; i++) {
-				if (Math.random() < 0.5) {
-					Helicopter h;
-					if(i%2 == 0) {
-						h = new Helicopter(-250 * i, map.getY(), i % 2);
+					if (Math.random() < 0.5) {
+						Helicopter h;
+						if (i % 2 == 0) {
+							h = new Helicopter(-250 * i, map.getY(), i % 2);
+						} else {
+							h = new Helicopter(-250 * i, map.getY1(), i % 2);
+						}
+						enemies.add(h);
+					} else {
+						Tank t;
+						if (i % 2 == 0) {
+							t = new Tank(-250 * i, map.getY(), i % 2);
+						} else {
+							t = new Tank(-250 * i, map.getY1(), i % 2);
+						}
+						enemies.add(t);
 					}
-					else {
-						h = new Helicopter(-250 * i, map.getY1(), i % 2);
-					}
-					enemies.add(h);
-				} else {
-					Tank t;
-					if(i%2 == 0){
-						t = new Tank(-250 * i, map.getY(), i%2);
-					}
-					else{
-						t = new Tank(-250 * i, map.getY1(), i%2);
-					}
-					enemies.add(t);
 				}
 			}
-		}
 		for (Enemy en : enemies) {
 			for (Tower tower : twrs) {
 				try {
@@ -204,7 +202,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 		for (Enemy en : enemies) {
-			if(en.i == 0) {
+			if(en.i == 0 || !path.equals("map3.tmx")) {
 				en.move(map.getRouteX(), map.getRouteY(), path, enemies);
 			}
 			else{

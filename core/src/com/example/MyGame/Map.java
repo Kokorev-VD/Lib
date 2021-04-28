@@ -78,6 +78,7 @@ public class Map {
                 routeY.add(620);
 
                 y = 500;
+                y1 = 500;
                 break;
             case "map1.tmx":
                 routeX.add(1600);
@@ -97,6 +98,7 @@ public class Map {
                 routeY.add(600);
 
                 y = 980;
+                y1 = 980;
                 break;
             case "map2.tmx":
                 routeX.add(0);
@@ -116,6 +118,7 @@ public class Map {
                 routeY.add(550);
 
                 y = 820;
+                y1 = 820;
                 break;
             case "map3.tmx":
                 routeX.add(560);
