@@ -193,29 +193,29 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			wave++;
 			Enemy.setA((int) (Enemy.getA() + 50));
 			for (int i = 0; i < enal; i++) {
-					if (Math.random() < heliChance) {
-						Helicopter h;
-						if (i % 2 == 0) {
-							h = new Helicopter(-250 * i, map.getY(), i % 2);
-						} else {
-							h = new Helicopter(-250 * i, map.getY1(), i % 2);
-						}
-						enemies.add(h);
+				if (Math.random() < heliChance) {
+					Helicopter h;
+					if (i % 2 == 0) {
+						h = new Helicopter(-250 * i, map.getY(), i % 2);
 					} else {
-						Tank t;
-						if (i % 2 == 0) {
-							t = new Tank(-250 * i, map.getY(), i % 2);
-						} else {
-							t = new Tank(-250 * i, map.getY1(), i % 2);
-						}
-						enemies.add(t);
+						h = new Helicopter(-250 * i, map.getY1(), i % 2);
 					}
+					enemies.add(h);
+				} else {
+					Tank t;
+					if (i % 2 == 0) {
+						t = new Tank(-250 * i, map.getY(), i % 2);
+					} else {
+						t = new Tank(-250 * i, map.getY1(), i % 2);
+					}
+					enemies.add(t);
 				}
 			}
+		}
 		for (Enemy en : enemies) {
 			for (Tower tower : twrs) {
 				try {
-					if(tower instanceof RocketTower) tower.attack(enemies.getFirst());
+					if(tower instanceof RocketTower && en instanceof Helicopter) tower.attack(en);
 					else tower.attack(en, srend);
 				} catch (Throwable throwable) {
 					throwable.printStackTrace();

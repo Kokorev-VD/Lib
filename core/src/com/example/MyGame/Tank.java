@@ -11,6 +11,8 @@ public class Tank extends Enemy {
     boolean was = false;
     {
         health = Enemy.getA();
+        this.setVelX(1d);
+        this.setVelY(1d);
     }
     public Tank(int x, int y, int num) {
         i = num;

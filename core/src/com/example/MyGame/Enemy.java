@@ -40,7 +40,6 @@ public abstract class Enemy {
             blade.setTexture(new Texture("empty_texture.png"));
             velY = 0d;
             velX = 0d;
-            Rocket.a *=1.3;
             MyGame.money+=a/10;
         }
     }

@@ -12,8 +12,8 @@ public class Helicopter extends Enemy {
     private boolean was = false;
     {
         health = Enemy.getA()/2;
-        setVelX(4d);
-        setVelY(4d);
+        setVelX(2d);
+        setVelY(2d);
     }
 
     public Helicopter(int x, int y, int num) {
@@ -56,8 +56,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -70,8 +70,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -89,8 +89,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -103,8 +103,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -120,8 +120,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -133,8 +133,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -145,8 +145,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -158,8 +158,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -175,8 +175,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -188,8 +188,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -205,8 +205,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
@@ -218,8 +218,8 @@ public class Helicopter extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(4d);
-                    super.setVelY(4d);
+                    super.setVelX(2d);
+                    super.setVelY(2d);
                     was = false;
                 }
                 break;
