@@ -20,9 +20,6 @@ public abstract class Enemy {
     private Double velY = 2d;
     private boolean alive = true;
     int i;
-    {
-        health = a;
-    }
 
     public boolean isAlive() {
         return alive;

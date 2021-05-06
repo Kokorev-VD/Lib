@@ -39,23 +39,21 @@ public class LevelActivity extends ApplicationAdapter {
         font.getData().setScale(4);
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         font.setColor(Color.BLACK);
-        for(int y = 3; y>0; y--){
-            for(int x = 1; x<5; x++){
-                btns.add(new MyButton(400 * x, 250*y+25, level));
-                level++;
-            }
+        for (int x = 1; x < 5; x++) {
+            btns.add(new MyButton(400 * x, 525, level));
+            level++;
         }
         Gdx.input.setInputProcessor(new InputAdapter() {
             public boolean touchUp(int x, int y, int pointer, int button) {
-                for (MyButton btn:btns){
-                    if(btn.getX() + 200 > x && btn.getX() - 200 < x && btn.getY() + 125 > 1100 - y && btn.getY() - 125 < 1100 - y){
+                for (MyButton btn : btns) {
+                    if (btn.getX() + 200 > x && btn.getX() - 200 < x && btn.getY() + 125 > 1100 - y && btn.getY() - 125 < 1100 - y) {
                         pressed = true;
                         last = btn;
                     }
                 }
                 return true;
             }
-    });
+        });
     }
 
     @Override

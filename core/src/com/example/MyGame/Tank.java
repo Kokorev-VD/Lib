@@ -9,7 +9,9 @@ import java.util.Objects;
 
 public class Tank extends Enemy {
     boolean was = false;
-
+    {
+        health = Enemy.getA();
+    }
     public Tank(int x, int y, int num) {
         i = num;
         this.enemy = new Sprite(new Texture("tank.png"));
@@ -44,8 +46,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -58,8 +60,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -77,8 +79,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -91,8 +93,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -108,8 +110,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -121,8 +123,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -133,8 +135,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -146,8 +148,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -163,8 +165,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -176,8 +178,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -193,8 +195,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() + 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -206,8 +208,8 @@ public class Tank extends Enemy {
                     super.setS(super.getS() - 2);
                 } else {
                     super.setS(0);
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     was = false;
                 }
                 break;
@@ -219,7 +221,7 @@ public class Tank extends Enemy {
             super.setVelX((double) 0);
             super.setVelY((double) 0);
             switch (path) {
-                case "try.tmx":
+                case "map0.tmx":
                     rotation1();
                     break;
                 case "map1.tmx":
@@ -237,8 +239,8 @@ public class Tank extends Enemy {
                     }
                     break;
                 default:
-                    super.setVelX(2d);
-                    super.setVelY(2d);
+                    super.setVelX(1d);
+                    super.setVelY(1d);
                     break;
             }
         }

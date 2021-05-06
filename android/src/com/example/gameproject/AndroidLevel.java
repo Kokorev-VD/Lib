@@ -25,7 +25,7 @@ public class AndroidLevel extends AndroidApplication {
         paths = new ArrayList<>();
         timer = new Timer();
         timer.schedule(new UpdateTimeTask1(), 0, 4);
-        paths.add("try.tmx");
+        paths.add("map0.tmx");
         paths.add("map1.tmx");
         paths.add("map2.tmx");
         paths.add("map3.tmx");

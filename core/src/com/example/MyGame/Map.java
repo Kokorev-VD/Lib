@@ -60,7 +60,7 @@ public class Map {
         tiledMap = new TmxMapLoader().load(path);
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         switch (path){
-            case "try.tmx":
+            case "map0.tmx":
                 routeX.add(300);
                 routeX.add(300);
                 routeX.add(750);
@@ -77,8 +77,8 @@ public class Map {
                 routeY.add(620);
                 routeY.add(620);
 
-                y = 500;
-                y1 = 500;
+                y = 550;
+                y1 = 550;
                 break;
             case "map1.tmx":
                 routeX.add(1600);
@@ -102,9 +102,9 @@ public class Map {
                 break;
             case "map2.tmx":
                 routeX.add(0);
-                routeX.add(350);
-                routeX.add(930);
-                routeX.add(1220);
+                routeX.add(290);
+                routeX.add(980);
+                routeX.add(1270);
                 routeX.add(1700);
                 routeX.add(1700);
                 routeX.add(2160);

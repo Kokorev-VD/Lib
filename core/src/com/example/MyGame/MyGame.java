@@ -32,6 +32,8 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	BitmapFont font;
 	int enal = 10;
 	int abilityCost = 25;
+	int wave = 1;
+	float heliChance;
 	public ShapeRenderer srend;
 	boolean canPlace = false;
 	boolean canPlace1 = false;
@@ -41,6 +43,20 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 
 	public MyGame(String path) {
 		this.path = path;
+		switch (path){
+			case "map0.tmx":
+				heliChance = 0;
+				break;
+			case "map1.tmx":
+				heliChance = 1;
+				break;
+			case "map2.tmx":
+				heliChance = 0.3f;
+				break;
+			case "map3.tmx":
+				heliChance = 0.5f;
+				break;
+		}
 	}
 
 	@Override
@@ -63,7 +79,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		velX = 0.8;
 		velY = 0.8;
 		for (int i = 0; i < 10; i++) {
-			if (Math.random() < 0.5) {
+			if (Math.random() < heliChance) {
 				Helicopter h;
 				if(i%2 == 0) {
 					h = new Helicopter(-250 * i, map.getY(), i % 2);
@@ -119,7 +135,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 					twrs.addFirst(tower);
 					velX /= 1.16;
 					velY /= 1.16;
-					money-=50;
+					money-=15;
 					canPlace1 = false;
 					System.out.println(money);
 				}
@@ -144,6 +160,9 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public void render() {
+		if(wave == 10){
+			System.exit(1);
+		}
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -160,8 +179,9 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		batch.begin();
 
 		font.draw(batch, "Money:" + money, 75, 100);
+		font.draw(batch, "Wave:" + wave, 75, 160);
 		font.draw(batch, "Cost:10", 1005, 100);
-		font.draw(batch, "Cost:50", 1305, 100);
+		font.draw(batch, "Cost:15", 1305, 100);
 		font.draw(batch, "Cost:" + abilityCost, 1605, 100);
 		srend.begin(ShapeRenderer.ShapeType.Filled);
 		btn.draw(batch);
@@ -169,10 +189,11 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		btn2.draw(batch);
 		if (enemies.isEmpty()) {
 			Rocket.a = 1;
-			enal += 5;
+			enal += 2;
+			wave++;
 			Enemy.setA((int) (Enemy.getA() + 50));
 			for (int i = 0; i < enal; i++) {
-					if (Math.random() < 0.5) {
+					if (Math.random() < heliChance) {
 						Helicopter h;
 						if (i % 2 == 0) {
 							h = new Helicopter(-250 * i, map.getY(), i % 2);

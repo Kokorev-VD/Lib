@@ -45,6 +45,7 @@ public class MyStartActivity extends ApplicationAdapter {
     @Override
     public void render() {
         batch.begin();
+
         batch.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         exit.draw(batch);
         btn.draw(batch);
