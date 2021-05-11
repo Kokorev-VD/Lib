@@ -24,7 +24,7 @@ public class Rocket {
             sprite.setY(sprite.getY() + a);
         } else {
             sprite.setX(enemy.enemy.getX());
-            sprite.setY(sprite.getY() - 2*a);
+            sprite.setY(sprite.getY() - 1.5f*a);
         }
         if (sprite.getY() > 1060) {
             up = true;

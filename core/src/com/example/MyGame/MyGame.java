@@ -127,7 +127,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 					canPlace = false;
 					System.out.println(money);
 				}
-				if (canPlace1 && money>=50) {
+				if (canPlace1 && money>=10) {
 					Tower tower = new RocketTower();
 					tower.setPosX(x);
 					tower.setPosY(y * (-1) + 1000);
@@ -135,7 +135,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 					twrs.addFirst(tower);
 					velX /= 1.16;
 					velY /= 1.16;
-					money-=15;
+					money-=10;
 					canPlace1 = false;
 					System.out.println(money);
 				}
@@ -148,8 +148,6 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 				if (x >= 1605 & x <= 1755 & y * (-1) + 1100 >= 125 & y * (-1) + 1100 <= 275 && money>=abilityCost) {
 					boom.ability(enemies);
 					money-=abilityCost;
-					System.out.println(money);
-					abilityCost+=5;
 				}
 
 				return true;
@@ -181,7 +179,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		font.draw(batch, "Money:" + money, 75, 100);
 		font.draw(batch, "Wave:" + wave, 75, 160);
 		font.draw(batch, "Cost:10", 1005, 100);
-		font.draw(batch, "Cost:15", 1305, 100);
+		font.draw(batch, "Cost:10", 1305, 100);
 		font.draw(batch, "Cost:" + abilityCost, 1605, 100);
 		srend.begin(ShapeRenderer.ShapeType.Filled);
 		btn.draw(batch);
