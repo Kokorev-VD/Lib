@@ -36,6 +36,7 @@ public class AndroidLevel extends AndroidApplication {
             if(la.isPressed()){
                 Intent intent = new Intent(AndroidLevel.this, AndroidGame.class);
                 intent.putExtra("path", paths.get(la.getLast().getLevel()-1));
+
                 startActivity(intent);
                 timer.cancel();
             }

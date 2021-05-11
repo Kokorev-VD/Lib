@@ -233,7 +233,7 @@ public class Tank extends Enemy {
                     rotation3();
                     break;
                 case "map3.tmx":
-                    if(enemies.indexOf(this) % 2 == 0){
+                    if(i % 2 == 0){
                         rotation4();
                     }
                     else {
@@ -258,11 +258,10 @@ public class Tank extends Enemy {
         } else if ((int) enemy.getY() < routeY.get(super.getIndexY())) {
             enemy.setY((float) (enemy.getY() + super.getVelY()));
         }
-        if ((int) enemy.getX() == routeX.get(super.getIndexX()) && (int) enemy.getY() == routeY.get(super.getIndexY())) {
-            super.setIndexX(super.getIndexX() + 1);
-            super.setIndexY(super.getIndexY() + 1);
-            was = true;
-        }
-
+            if ((int) enemy.getX() == routeX.get(super.getIndexX()) && (int) enemy.getY() == routeY.get(super.getIndexY())) {
+                super.setIndexX(super.getIndexX() + 1);
+                super.setIndexY(super.getIndexY() + 1);
+                was = true;
+            }
     }
 }

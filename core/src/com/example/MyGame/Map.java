@@ -85,8 +85,8 @@ public class Map {
                 routeX.add(1600);
                 routeX.add(370);
                 routeX.add(370);
-                routeX.add(1700);
-                routeX.add(1700);
+                routeX.add(1620);
+                routeX.add(1620);
                 routeX.add(2160);
 
                 routeY.add(980);

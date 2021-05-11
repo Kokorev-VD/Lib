@@ -16,8 +16,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import java.util.LinkedList;
 
 public class MyGame extends ApplicationAdapter implements InputProcessor {
+	public boolean lost = false;
 	Batch batch;
-	Texture bg;
 	Map map;
 	LinkedList<Enemy> enemies;
 	LinkedList<Tower> twrs;
@@ -40,8 +40,8 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	public void PlayScreen(){
 		Gdx.input.setInputProcessor(this);
 	}
-
 	public MyGame(String path) {
+
 		this.path = path;
 		switch (path){
 			case "map0.tmx":
@@ -158,9 +158,6 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 
 	@Override
 	public void render() {
-		if(wave == 10){
-			System.exit(1);
-		}
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -221,11 +218,14 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 			}
 		}
 		for (Enemy en : enemies) {
-			if(en.i == 0 || !path.equals("map3.tmx")) {
-				en.move(map.getRouteX(), map.getRouteY(), path, enemies);
-			}
-			else{
-				en.move(map.getRouteX1(), map.getRouteY1(), path, enemies);
+			try {
+				if (en.i == 0 || !path.equals("map3.tmx")) {
+					en.move(map.getRouteX(), map.getRouteY(), path, enemies);
+				} else {
+					en.move(map.getRouteX1(), map.getRouteY1(), path, enemies);
+				}
+			} catch (Exception e) {
+				lost = true;
 			}
 			en.enemy.draw(batch);
 			en.blade.draw(batch);
@@ -256,7 +256,6 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	public void dispose() {
 		batch.dispose();
 		font.dispose();
-		bg.dispose();
 	}
 
 	@Override

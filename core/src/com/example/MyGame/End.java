@@ -17,7 +17,6 @@ public class End extends ApplicationAdapter {
     Texture bg;
     BitmapFont font;
     ArrayList<MyButton> btns;
-
     boolean completed;
     public End(boolean c){
         completed = c;
@@ -34,7 +33,7 @@ public class End extends ApplicationAdapter {
         font.setColor(Color.BLACK);
         Gdx.input.setInputProcessor(new InputAdapter() {
             public boolean touchUp(int x, int y, int pointer, int button) {
-                if (x > 950 && x < 1050 && y > 75 && y < 125) {
+                if (x > 950 && x < 1050 && 1100-y > 50 && 1100-y < 150) {
                     System.exit(1);
                 }
                 return true;
@@ -47,7 +46,7 @@ public class End extends ApplicationAdapter {
         batch.begin();
         batch.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         if(completed){
-            font.draw(batch, "Victory", 1000f, 300f);
+            font.draw(batch, "Victory", 970f, 300f);
         }
         else{
             font.draw(batch, "Lose", 1000f, 300f);
