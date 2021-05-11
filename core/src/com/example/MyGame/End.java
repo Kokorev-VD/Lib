@@ -2,6 +2,7 @@ package com.example.MyGame;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -31,7 +32,14 @@ public class End extends ApplicationAdapter {
         font.getData().setScale(4);
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         font.setColor(Color.BLACK);
-
+        Gdx.input.setInputProcessor(new InputAdapter() {
+            public boolean touchUp(int x, int y, int pointer, int button) {
+                if (x > 950 && x < 1050 && y > 75 && y < 125) {
+                    System.exit(1);
+                }
+                return true;
+            }
+        });
     }
 
     @Override

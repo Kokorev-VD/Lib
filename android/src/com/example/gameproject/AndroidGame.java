@@ -1,18 +1,39 @@
 package com.example.gameproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.example.MyGame.MyGame;
 
-public class AndroidGame extends AndroidApplication {
+import java.util.Timer;
+import java.util.TimerTask;
 
+public class AndroidGame extends AndroidApplication {
+Timer timer;
+MyGame mg;
+String path;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-        String path = getIntent().getStringExtra("path");
-        initialize(new MyGame(path), config);
+        path = getIntent().getStringExtra("path");
+        mg = new MyGame(path);
+        initialize(mg, config);
+        timer = new Timer();
+        timer.schedule(new UpdateTimeTask1(), 0, 4);
+    }
+
+    private class UpdateTimeTask1 extends TimerTask {
+        @Override
+        public void run() {
+            if((mg.wave == 4 && (path.equals("map0.tmx") || path.equals("map1.tmx"))) || (mg.wave == 6 && (path.equals("map2.tmx") || path.equals("map3.tmx")))){
+                Intent intent = new Intent(AndroidGame.this, EndActivity.class);
+                intent.putExtra("path", true);
+                startActivity(intent);
+                timer.cancel();
+            }
+        }
     }
 }

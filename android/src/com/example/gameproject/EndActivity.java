@@ -12,7 +12,7 @@ public class EndActivity extends AndroidApplication {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-
-        initialize(new End(), config);
+        boolean c = getIntent().getBooleanExtra("path",false);
+        initialize(new End(c), config);
     }
 }

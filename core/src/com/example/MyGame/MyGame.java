@@ -32,7 +32,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 	BitmapFont font;
 	int enal = 10;
 	int abilityCost = 25;
-	int wave = 1;
+	public int wave = 1;
 	float heliChance;
 	public ShapeRenderer srend;
 	boolean canPlace = false;
