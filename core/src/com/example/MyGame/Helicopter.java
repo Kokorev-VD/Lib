@@ -241,7 +241,7 @@ public class Helicopter extends Enemy {
                     rotation3();
                     break;
                 case "map3.tmx":
-                    if(enemies.indexOf(this) % 2 == 0){
+                    if(i % 2 == 0){
                         rotation4();
                     }
                     else {
