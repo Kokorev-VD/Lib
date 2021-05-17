@@ -13,6 +13,7 @@ public class EndActivity extends AndroidApplication {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         boolean c = getIntent().getBooleanExtra("path",false);
-        initialize(new End(c), config);
+        char level = getIntent().getCharExtra("level",'0');
+        initialize(new End(c, level), config);
     }
 }

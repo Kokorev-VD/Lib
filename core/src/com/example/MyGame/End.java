@@ -9,6 +9,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class End extends ApplicationAdapter {
@@ -17,14 +21,25 @@ public class End extends ApplicationAdapter {
     Texture bg;
     BitmapFont font;
     ArrayList<MyButton> btns;
+    File mFile;
+    char f;
+    FileReader reader;
+    char l;
     boolean completed;
-    public End(boolean c){
+    public End(boolean c, char level){
         completed = c;
+        l = level;
     }
 
     @Override
     public void create() {
+        mFile = new File("Level.txt");
         btns = new ArrayList<>();
+        try {
+            reader = new FileReader("notes3.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         bg = new Texture("bge.png");
         batch = new SpriteBatch();
         font = new BitmapFont();
@@ -46,10 +61,21 @@ public class End extends ApplicationAdapter {
         batch.begin();
         batch.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         if(completed){
-            font.draw(batch, "Victory", 970f, 300f);
+            try
+            {
+                int c;
+                while((c=reader.read())!=-1){
+                    f = (char) c;
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            font.draw(batch, "Victory", 970f, 600f);
         }
         else{
-            font.draw(batch, "Lose", 1000f, 300f);
+            font.draw(batch, "Lose", 1000f, 600f);
         }
         font.draw(batch, "Exit", 1000f, 100f);
         batch.end();

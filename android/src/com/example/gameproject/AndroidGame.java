@@ -31,12 +31,32 @@ String path;
             if((mg.wave == 2 && (path.equals("map0.tmx") || path.equals("map1.tmx"))) || (mg.wave == 6 && (path.equals("map2.tmx") || path.equals("map3.tmx"))) && !mg.lost){
                 Intent intent = new Intent(AndroidGame.this, EndActivity.class);
                 intent.putExtra("path", true);
+                char level;
+                switch (path){
+                    case "map0.tmx":
+                        level = '1';
+                        break;
+                    case "map1.tmx":
+                        level = '2';
+                        break;
+                    case "map2.tmx":
+                        level = '3';
+                        break;
+                    case "map3.tmx":
+                        level = '4';
+                        break;
+                    default:
+                        level = '0';
+                        break;
+                }
+                intent.putExtra("level", level);
                 startActivity(intent);
                 System.exit(1);
                 timer.cancel();
             }else if(mg.lost){
                 Intent intent = new Intent(AndroidGame.this, EndActivity.class);
                 intent.putExtra("path", false);
+                intent.putExtra("level", '0');
                 startActivity(intent);
                 System.exit(1);
                 timer.cancel();
