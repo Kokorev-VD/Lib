@@ -49,17 +49,18 @@ String path;
                         level = '0';
                         break;
                 }
+                System.out.println(level);
                 intent.putExtra("level", level);
                 startActivity(intent);
                 System.exit(1);
-                timer.cancel();
+
             }else if(mg.lost){
                 Intent intent = new Intent(AndroidGame.this, EndActivity.class);
                 intent.putExtra("path", false);
                 intent.putExtra("level", '0');
                 startActivity(intent);
                 System.exit(1);
-                timer.cancel();
+
             }
         }
     }

@@ -36,7 +36,7 @@ public class AndroidLauncher extends AndroidApplication {
 			if(pressed){
 				Intent intent = new Intent(AndroidLauncher.this, AndroidLevel.class);
 				startActivity(intent);
-				timer.cancel();
+timer.cancel();
 			}
 		}
 	}

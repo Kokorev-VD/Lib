@@ -116,7 +116,7 @@ public class Map {
                 routeY.add(820);
                 routeY.add(550);
                 routeY.add(550);
-
+                Enemy.setA(150);
                 y = 820;
                 y1 = 820;
                 break;
@@ -144,7 +144,7 @@ public class Map {
                 routeY1.add(530);
                 routeY1.add(980);
                 routeY1.add(980);
-
+                Enemy.setA(200);
                 y = 900;
 
                 y1 = 120;

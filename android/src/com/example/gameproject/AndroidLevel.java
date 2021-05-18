@@ -38,7 +38,7 @@ public class AndroidLevel extends AndroidApplication {
                 intent.putExtra("path", paths.get(la.getLast().getLevel()-1));
 
                 startActivity(intent);
-                timer.cancel();
+timer.cancel();
             }
         }
     }
