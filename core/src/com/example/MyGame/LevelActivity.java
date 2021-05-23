@@ -9,9 +9,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class LevelActivity extends ApplicationAdapter {
@@ -20,7 +17,7 @@ public class LevelActivity extends ApplicationAdapter {
     Texture bg;
     BitmapFont font;
     ArrayList<MyButton> btns;
-    char f = '4';
+    String f = "";
     public boolean isPressed() {
         return pressed;
     }
@@ -33,23 +30,15 @@ public class LevelActivity extends ApplicationAdapter {
     MyButton last;
     int level = 1;
 
+    public LevelActivity(String f) {
+        this.f = f;
+    }
+
     @Override
     public void create() {
         btns = new ArrayList<>();
         bg = new Texture("bge.png");
-        try {
-            File file = new File("l1.txt".trim());
-            System.out.println(file.exists());
-            System.out.println(file.canRead());
-            FileReader reader = new FileReader(file);
-            int c;
-            while ((c = reader.read()) != -1) {
-                f = (char) c;
-            }
-            System.out.println(f);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.getData().setScale(4);
@@ -62,7 +51,7 @@ public class LevelActivity extends ApplicationAdapter {
         Gdx.input.setInputProcessor(new InputAdapter() {
             public boolean touchUp(int x, int y, int pointer, int button) {
                 for (MyButton btn : btns) {
-                    if (btn.getX() + 200 > x && btn.getX() - 200 < x && btn.getY() + 125 > 1100 - y && btn.getY() - 125 < 1100 - y && btn.getLevel() <= (int)f + 1) {
+                    if (btn.getX() + 200 > x && btn.getX() - 200 < x && btn.getY() + 125 > 1100 - y && btn.getY() - 125 < 1100 - y && btn.getLevel() <= Integer.parseInt(f) + 1) {
                         pressed = true;
                         last = btn;
                     }

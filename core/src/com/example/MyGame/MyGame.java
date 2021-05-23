@@ -166,11 +166,6 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 		map.tiledMapRenderer.setView(map.camera.combined,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		map.tiledMapRenderer.render();
 		map.stage.draw();
-		try {
-			Thread.sleep(1000/100);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		batch.begin();
 
 		font.draw(batch, "Money:" + money, 75, 100);

@@ -9,9 +9,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class End extends ApplicationAdapter {
@@ -20,36 +17,14 @@ public class End extends ApplicationAdapter {
     Texture bg;
     BitmapFont font;
     ArrayList<MyButton> btns;
-    File mFile;
-    char f;
-    FileReader reader;
-    FileWriter writer;
-    char l;
     boolean completed;
-    public End(boolean c, char level){
+    public End(boolean c){
         completed = c;
-        l = level;
     }
 
     @Override
     public void create() {
-        mFile = new File("l1.txt");
         btns = new ArrayList<>();
-        /*try {
-            reader = new FileReader("notes3.txt");
-
-            int c;
-            while ((c = reader.read()) != -1) {
-                f = (char) c;
-            }
-        } catch (IOException e) {
-           e.printStackTrace();
-       }
-        try {
-            writer = new FileWriter("notes3.txt", false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
         bg = new Texture("bge.png");
         batch = new SpriteBatch();
         font = new BitmapFont();
@@ -71,15 +46,6 @@ public class End extends ApplicationAdapter {
         batch.begin();
         batch.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         if(completed){
-            /*if((int) f < (int) l){
-                try{
-                    writer.append(l);
-
-                    writer.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }*/
             font.draw(batch, "Victory", 970f, 600f);
         }
         else{
