@@ -17,7 +17,7 @@ public class LevelActivity extends ApplicationAdapter {
     Texture bg;
     BitmapFont font;
     ArrayList<MyButton> btns;
-    String f = "";
+    String f;
     public boolean isPressed() {
         return pressed;
     }

@@ -78,7 +78,7 @@ public class MyGame extends ApplicationAdapter implements InputProcessor {
 
 		velX = 0.8;
 		velY = 0.8;
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 2; i++) {
 			if (Math.random() < heliChance) {
 				Helicopter h;
 				if(i%2 == 0) {

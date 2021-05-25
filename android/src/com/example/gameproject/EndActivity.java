@@ -1,15 +1,15 @@
 package com.example.gameproject;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.example.MyGame.End;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
 
 public class EndActivity extends AndroidApplication {
     String f;
@@ -20,33 +20,34 @@ public class EndActivity extends AndroidApplication {
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         boolean c = getIntent().getBooleanExtra("path", false);
         level = getIntent().getStringExtra("level");
-
+        initialize(new End(c), config);
         try {
-            InputStream is = getAssets().open("xx.txt");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-
-            is.close();
-            f = new String(buffer);
+            File f1 = this.getContext().getFileStreamPath("xx.txt");
+            FileReader fr = new FileReader(f1);
+            f = String.valueOf((char)fr.read());
             System.out.println(f);
-
+            System.out.println("-------------------");
+            fr.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         if (Integer.parseInt(level) > Integer.parseInt(f)) {
             try {
-                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.getContext().openFileOutput("xx.txt", Context.MODE_PRIVATE));
+                File f = this.getContext().getFileStreamPath("xx.txt");
+                FileWriter fw = new FileWriter(f, false);
+                FileReader fr = new FileReader(f);
 
-                outputStreamWriter.write(level);
-                outputStreamWriter.flush();
-                outputStreamWriter.close();
+                fw.write(level);
+                fw.flush();
+                fw.close();
+
+                System.out.println((char)fr.read());
                 System.out.println(level);
+                System.out.println("-------------------");
+                fr.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
-        initialize(new End(c), config);
     }
 }

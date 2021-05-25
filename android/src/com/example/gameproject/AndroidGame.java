@@ -28,7 +28,7 @@ String path;
     private class UpdateTimeTask1 extends TimerTask {
         @Override
         public void run() {
-            if((mg.wave == 3 && (path.equals("map0.tmx") || path.equals("map1.tmx"))) || (mg.wave == 6 && (path.equals("map2.tmx") || path.equals("map3.tmx"))) && !mg.lost){
+            if((mg.wave == 2 && (path.equals("map0.tmx") || path.equals("map1.tmx"))) || (mg.wave == 6 && (path.equals("map2.tmx") || path.equals("map3.tmx"))) && !mg.lost){
                 Intent intent = new Intent(AndroidGame.this, EndActivity.class);
                 intent.putExtra("path", true);
                 String level;
@@ -60,7 +60,6 @@ String path;
                 intent.putExtra("level", "0");
                 startActivity(intent);
                 System.exit(1);
-
             }
         }
     }

@@ -7,7 +7,7 @@ public class Rocket {
     private boolean once = true;
     private boolean up = false;
     private final Sprite sprite = new Sprite(new Texture("rocket1.png"));
-    static float a = 1;
+    static float a = 5;
     {
         sprite.setSize(55, 55);
         sprite.setOriginCenter();

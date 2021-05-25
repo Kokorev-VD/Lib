@@ -7,8 +7,9 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.example.MyGame.LevelActivity;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,20 +19,20 @@ public class AndroidLevel extends AndroidApplication {
     LevelActivity la;
     ArrayList<String> paths;
     String f;
+
     @Override
-    protected void onCreate (Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         try {
-            InputStream is = getAssets().open("xx.txt");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-           f = new String(buffer);
+            File f1 = this.getContext().getFileStreamPath("xx.txt");
+            FileReader fr = new FileReader(f1);
+            f = String.valueOf((char) fr.read());
             System.out.println(f);
+            System.out.println("-------------------");
+            fr.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         la = new LevelActivity(f);
         initialize(la, config);
@@ -43,17 +44,19 @@ public class AndroidLevel extends AndroidApplication {
         paths.add("map1.tmx");
         paths.add("map2.tmx");
         paths.add("map3.tmx");
+
+
     }
+
     private class UpdateTimeTask1 extends TimerTask {
         @Override
         public void run() {
-
-            if(la.isPressed()){
+            if (la.isPressed()) {
                 Intent intent = new Intent(AndroidLevel.this, AndroidGame.class);
-                intent.putExtra("path", paths.get(la.getLast().getLevel()-1));
+                intent.putExtra("path", paths.get(la.getLast().getLevel() - 1));
 
                 startActivity(intent);
-timer.cancel();
+                timer.cancel();
             }
         }
     }
